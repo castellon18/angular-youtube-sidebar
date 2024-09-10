@@ -1,0 +1,20 @@
+<div class="sidenav-header">
+    <img src="/public/sharingan.png" alt="" width={{profilePictureSize()}} height={{profilePictureSize()}}>
+    <div class="header-text" [class.hide-header-text]="sidenavCollapsed()">
+        <h2>Your Channel</h2>
+        <p>Ricardo Castellón</p>
+    </div>
+</div>
+<mat-divider />
+<mat-nav-list>
+    @for (item of menuItem; track item.id) {
+        <a mat-list-item class="menu-item" routerLink={{item.router}} routerLinkActive="selected-menu-item" #rla="routerLinkActive" [activated]="rla.isActive">
+            <mat-icon matListItemIcon>
+                {{item.icon}}
+            </mat-icon>
+            @if (!sidenavCollapsed()) {
+                <span>{{item.label}}</span>
+            }
+        </a>
+    }
+</mat-nav-list>
