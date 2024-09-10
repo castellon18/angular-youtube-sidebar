@@ -1,20 +1,18 @@
 mat-toolbar {
     position: relative;
     z-index: 5;
-    background-color: cadetblue;
     font-size: 1rem;
-    color: white;
   }
 
   .content {
     padding: 24px;
   }
   
-  mat-sidenav-container {
+  mat-drawer-container {
     height: calc(100vh - 64px);
   }
   
-  mat-sidenav, mat-sidenav-content {
+  mat-drawer, mat-drawer-content {
     transition: all 500ms ease-in-out;
   }
   

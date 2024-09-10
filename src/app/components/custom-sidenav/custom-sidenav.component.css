@@ -5,12 +5,6 @@
   .sidenav-header {
     padding-top: 24px;
     text-align: center;
-    background-color: darkgrey;
-    color: blue;
-  }
-  
-  mat-nav-list{
-    background-color: darkgrey;
   }
 
   .sidenav-header img {
