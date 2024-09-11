@@ -13,8 +13,9 @@
     margin-bottom: 10px;
   }
   
-  .header-text {
+  .sidenav-header .header-text {
     height: 3rem;
+    /*color: white;*/
   }
   
   .sidenav-header .header-text h2{
@@ -32,13 +33,4 @@
     opacity: 0;
     height: 0px !important;
   }
-  
-  .menu-item {
-    border-left: 5px solid;
-    border-left-color: rgba(0, 0, 0, 0);
-  }
-  
-  .selected-menu-item {
-    border-left-color: blue;
-    background-color: rgba(0, 0, 0, 0.05);
-  }
+ 

@@ -1,0 +1,53 @@
+<a
+  class="menu-item"
+  mat-list-item
+  [routerLink]="item().router"
+  (click)="toggleNested()"
+  routerLinkActive="selected-menu-item"
+  #rla="routerLinkActive"
+  [activated]="rla.isActive"
+>
+  <mat-icon
+    matListItemIcon
+    [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
+  >
+    {{ item().icon }}
+  </mat-icon>
+  @if (!collapsed()) {
+  <span matListItemTitle>{{ item().label }}</span>
+  } @if(item().subItem){
+  <span matListItemMeta>
+    @if(nestedMenuOpen()){
+    <mat-icon>expand_less</mat-icon>
+    }@else {
+    <mat-icon>expand_more</mat-icon>
+    }
+  </span>
+  }
+</a>
+
+@if(item().subItem && nestedMenuOpen()){
+<div @expandContractMenu>
+  @for (subItem of item().subItem; track subItem.id) {
+  <a
+    class="menu-item"
+    [class.idented]="!collapsed()"
+    mat-list-item
+    [routerLink]="item().router + '/' + subItem.router"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [activated]="rla.isActive"
+  >
+    <mat-icon
+      matListItemIcon
+      [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
+    >
+      {{ subItem.icon }}
+    </mat-icon>
+    @if (!collapsed()) {
+    <span matListItemTitle>{{ subItem.label }}</span>
+    }
+  </a>
+  }
+</div>
+}

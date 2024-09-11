@@ -1,9 +1,9 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { IMenuItems } from '../../interfaces/menu-item.interface';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 @Component({
   selector: 'app-custom-sidenav',
@@ -12,40 +12,61 @@ import { IMenuItems } from '../../interfaces/menu-item.interface';
     RouterLink,
     RouterLinkActive,
     MatListModule,
-    MatIconModule,
-    MatDividerModule
+    MatDividerModule,
+    MenuItemComponent
 ],
   templateUrl: './custom-sidenav.component.html',
   styleUrls: ['./custom-sidenav.component.css'],
 })
 export class CustomSideNavComponent {
-  public menuItem: IMenuItems[] = [
+
+  menuItem = signal<IMenuItems[]>([
     {
       id: 1,
       icon: 'dashboard',
       label: 'Dashboard',
-      router: 'home',
+      router: 'dashborad',
     },
     {
       id: 2,
-      icon: 'groups',
-      label: 'Personas',
-      router: 'home/persona',
+      icon: 'video_library',
+      label: 'Content',
+      router: 'content',
+      subItem: [
+        {
+          id: 1,
+          icon: 'play_circle',
+          label: 'Videos',
+          router: 'videos'
+        },
+        {
+          id: 2,
+          icon: 'playlist_play',
+          label: 'PlayLists',
+          router: 'playlists'
+        },
+        {
+          id: 3,
+          icon: 'post_add',
+          label: 'Posts',
+          router: 'posts'
+        }
+      ]
     },
     {
-      id: 3,
-      icon: 'person',
-      label: 'Usuarios',
-      router: 'home/usuario',
+      id:3,
+      icon:'analytics',
+      label: 'Analytics',
+      router: 'analytics'
     },
     {
-      id: 4,
-      icon: 'logout',
-      label: 'Salir',
-      router: 'login',
-    },
-  ];
+      id:4,
+      icon:'comment',
+      label: 'Comments',
+      router: 'comments'
+    }
+  ]);
 
-  sidenavCollapsed = input.required();
+  sidenavCollapsed = input.required<boolean>();
   profilePictureSize = computed( () => this.sidenavCollapsed() ? '32' : '100' );
 }
