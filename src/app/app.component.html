@@ -7,9 +7,9 @@
 
 <mat-drawer-container>
   <mat-drawer opened="" mode="side" [style.width]="sidenavWidth()">
-    <app-custom-sidenav [sidenavCollapsed]="collapsed()"/>
+    <app-custom-sidenav [sidenavCollapsed]="collapsed()" />
   </mat-drawer>
   <mat-drawer-content class="content" [style.margin-left]="sidenavWidth()">
-    <router-outlet/>
+    <router-outlet />
   </mat-drawer-content>
 </mat-drawer-container>
